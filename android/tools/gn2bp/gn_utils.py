@@ -392,6 +392,8 @@ class GnParser(object):
       return 'android_arm64'
     elif toolchain == '//build/toolchain/android:android_clang_riscv64':
       return 'android_riscv64'
+    elif toolchain == '//build/toolchain/android:android_clang_loongarch64':
+      return 'android_loongarch64'
     else:
       return 'host'
 

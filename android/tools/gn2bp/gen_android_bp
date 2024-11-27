@@ -194,6 +194,7 @@ additional_args = {
     ],
     'cronet_aml_components_cronet_android_cronet__testing': [
         ('target',  ('android_riscv64', {'stem': "libmainlinecronet_riscv64"})),
+        ('target',  ('android_loongarch64', {'stem': "libmainlinecronet_loongarch64"})),
         ('comment', """TODO: remove stem for riscv64
 // This is essential as there can't be two different modules
 // with the same output. We usually got away with that because
@@ -595,6 +596,7 @@ class Module(object):
     self.target['android_arm'] = self.Target('android_arm')
     self.target['android_arm64'] = self.Target('android_arm64')
     self.target['android_riscv64'] = self.Target('android_riscv64')
+    self.target['android_loongarch64'] = self.Target('android_loongarch64')
     self.target['host'] = self.Target('host')
     self.target['glibc'] = self.Target('glibc')
     self.stl = None
@@ -1531,6 +1533,8 @@ def get_cmd_condition(arch):
     return "( $$CC_ARCH == 'arm64' && $$CC_OS == 'android' )"
   elif arch == "android_riscv64":
     return "( $$CC_ARCH == 'riscv64' && $$CC_OS == 'android' )"
+  elif arch == "android_loongarch64":
+    return "( $$CC_ARCH == 'loongarch64' && $$CC_OS == 'android' )"
   elif arch == "host":
     return "$$CC_OS != 'android'"
   else:
